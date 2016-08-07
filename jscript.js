@@ -14,5 +14,30 @@ $.each(topics, function(index){
 })
 
 $('.btn').on('click', function(){
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + $(this).data() + "&api_key=dc6zaTOxFJmzC&limit=10";
+	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + $(this).data('name') + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+	$.ajax({
+        url: queryURL,
+        method: 'GET'
+    })
+    .done(function(response){
+    	var results = response.data;
+
+    	for (var i = 0; i < 10 ; i++) {
+            var gifDiv = $('<div class="item">');
+
+            var rating = results[i].rating;
+
+            var p = $('<p>').text("Rating: " + rating);
+
+            var personImage = $('<img>');
+            personImage.attr('src', results[i].images.fixed_height.url);
+
+            gifDiv.append(p);
+            gifDiv.append(personImage);
+
+            $('#gifholder').prepend(gifDiv);
+        }
+
+    });
 })
