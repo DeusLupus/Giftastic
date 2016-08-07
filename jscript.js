@@ -1,10 +1,10 @@
 var topics = [
-	'dog', 'cat', 'duck', 'rabbit', 'pig', 'mouse', 'coyote', 'roadrunner'
+	'dog', 'cat', 'duck', 'rabbit', 'pig', 'mouse', 'coyote', 'roadrunner', 'wolverine'
 ];
 
 $.each(topics, function(index){
 	var $topicbtn = $('<button>').addClass('btn btn-success')
-								 .attr( 'id', topics[index])
+								 .attr('id', topics[index])
 								 .data('name', topics[index])
 								 .text(topics[index]);
 
@@ -24,17 +24,17 @@ $('.btn').on('click', function(){
     	var results = response.data;
 
     	for (var i = 0; i < 10 ; i++) {
-            var gifDiv = $('<div class="item">');
+            var gifDiv = $('<div class="giphy">');
 
             var rating = results[i].rating;
 
             var p = $('<p>').text("Rating: " + rating);
 
-            var personImage = $('<img>');
-            personImage.attr('src', results[i].images.fixed_height.url);
+            var gifImage = $('<img>');
+            gifImage.attr('src', results[i].images.fixed_height.url).attr('state', 'still');
 
             gifDiv.append(p);
-            gifDiv.append(personImage);
+            gifDiv.append(gifImage);
 
             $('#gifholder').prepend(gifDiv);
         }
