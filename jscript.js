@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 var topics = [
 	'dog', 'cat', 'duck', 'rabbit', 'pig', 'mouse', 'coyote', 'roadrunner', 'wolverine'
 ];
@@ -40,4 +42,5 @@ $('.btn').on('click', function(){
         }
 
     });
+})
 })
